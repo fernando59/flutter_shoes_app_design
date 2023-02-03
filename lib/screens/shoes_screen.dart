@@ -8,7 +8,7 @@ class ShoesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(children: <Widget>[
+        body: Column(children: const <Widget>[
       CustomAppBar(title: 'For you'),
       ShoesSizePreview()
     ]));
