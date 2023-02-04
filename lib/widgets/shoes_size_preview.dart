@@ -11,9 +11,77 @@ class ShoesSizePreview extends StatelessWidget {
         width: double.infinity,
         height: 430,
         decoration: BoxDecoration(
-            color: Color(0xffFFCF53), borderRadius: BorderRadius.circular(50)),
-        child: Column(children: <Widget>[_ShoesWithShadow()]),
+            color: const Color(0xffFFCF53),
+            borderRadius: BorderRadius.circular(50)),
+        child:
+            Column(children: <Widget>[const _ShoesWithShadow(), _ShoesSizes()]),
       ),
+    );
+  }
+}
+
+class _ShoesSizes extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: const [
+          _SizeShoe(
+            number: 7,
+          ),
+          _SizeShoe(
+            number: 7.5,
+          ),
+          _SizeShoe(
+            number: 8,
+          ),
+          _SizeShoe(
+            number: 8.5,
+          ),
+          _SizeShoe(
+            number: 9,
+          ),
+          _SizeShoe(
+            number: 9.5,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _SizeShoe extends StatelessWidget {
+  final double number;
+  const _SizeShoe({
+    Key? key,
+    required this.number,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.center,
+      child: Text(
+        '$number',
+        style: TextStyle(
+            color: number == 9 ? Colors.white : Color(0xffF1A23A),
+            fontSize: 16,
+            fontWeight: FontWeight.bold),
+      ),
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(
+          color: number == 9 ? Color(0xffF1A23A) : Colors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            if (number == 9)
+              BoxShadow(
+                  color: Color(0xffF1A23A),
+                  blurRadius: 10,
+                  offset: Offset(0, 5))
+          ]),
     );
   }
 }
