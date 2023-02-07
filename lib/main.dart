@@ -1,3 +1,4 @@
+import 'package:app_shoes/screens/shoe_description_screen.dart';
 import 'package:app_shoes/screens/shoes_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Shoes App',
         debugShowCheckedModeBanner: false,
-        home: ShoesScreen());
+        // home: ShoesScreen());
+        home: ShoeDescriptionScreen());
   }
 }

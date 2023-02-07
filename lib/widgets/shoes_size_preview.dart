@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
 
 class ShoesSizePreview extends StatelessWidget {
-  const ShoesSizePreview({super.key});
+  final bool fullScreen;
+  const ShoesSizePreview({super.key, required this.fullScreen});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+      padding: EdgeInsets.symmetric(
+          horizontal: fullScreen ? 5 : 30, vertical: fullScreen ? 5 : 0),
       child: Container(
         width: double.infinity,
-        height: 430,
+        height: fullScreen ? 410 : 430,
         decoration: BoxDecoration(
             color: const Color(0xffFFCF53),
-            borderRadius: BorderRadius.circular(50)),
-        child:
-            Column(children: <Widget>[const _ShoesWithShadow(), _ShoesSizes()]),
+            borderRadius: !fullScreen
+                ? BorderRadius.circular(50)
+                : BorderRadius.only(
+                    bottomLeft: Radius.circular(50),
+                    bottomRight: Radius.circular(50))),
+        child: Column(children: <Widget>[
+          const _ShoesWithShadow(),
+          if (!fullScreen) _ShoesSizes()
+        ]),
       ),
     );
   }
