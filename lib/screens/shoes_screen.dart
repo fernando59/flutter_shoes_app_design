@@ -30,7 +30,7 @@ class ShoesScreen extends StatelessWidget {
           )
         ]),
       )),
-      AddCartButton(
+      const AddCartButton(
         amount: 50,
       )
     ]));

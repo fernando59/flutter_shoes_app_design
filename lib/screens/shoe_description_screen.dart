@@ -1,6 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:app_shoes/widgets/index.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/shoe_model.dart';
 
 class ShoeDescriptionScreen extends StatelessWidget {
   const ShoeDescriptionScreen({super.key});
@@ -142,22 +145,26 @@ class _ColorsShoe extends StatelessWidget {
                   child: _ButtonColor(
                     color: Color(0xffC6d642),
                     index: 4,
+                    urlImg: 'assets/imgs/verde.png',
                   )),
               Positioned(
                   left: 60,
                   child: _ButtonColor(
                     color: Color(0xffFFAD29),
                     index: 3,
+                    urlImg: 'assets/imgs/amarillo.png',
                   )),
               Positioned(
                   left: 30,
                   child: _ButtonColor(
                     color: Color(0xff2099F1),
                     index: 2,
+                    urlImg: 'assets/imgs/azul.png',
                   )),
               _ButtonColor(
                 color: Color(0xff364D56),
                 index: 1,
+                urlImg: 'assets/imgs/negro.png',
               ),
             ],
           )),
@@ -179,21 +186,29 @@ class _ColorsShoe extends StatelessWidget {
 class _ButtonColor extends StatelessWidget {
   final Color color;
   final int index;
+  final String urlImg;
   const _ButtonColor({
     Key? key,
     required this.color,
     required this.index,
+    required this.urlImg,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FadeInLeft(
       delay: Duration(milliseconds: index * 100),
-      duration: Duration(milliseconds: 300),
-      child: Container(
-        width: 45,
-        height: 45,
-        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      duration: const Duration(milliseconds: 300),
+      child: GestureDetector(
+        onTap: () {
+          final shoeModel = Provider.of<ShoeModel>(context, listen: false);
+          shoeModel.assetImage = urlImg;
+        },
+        child: Container(
+          width: 45,
+          height: 45,
+          decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+        ),
       ),
     );
   }
