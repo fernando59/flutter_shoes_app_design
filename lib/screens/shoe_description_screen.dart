@@ -11,8 +11,11 @@ class ShoeDescriptionScreen extends StatelessWidget {
           body: Column(
         children: [
           Stack(children: [
-            const ShoesSizePreview(
-              fullScreen: true,
+            Hero(
+              tag: 'shoe-1',
+              child: const ShoesSizePreview(
+                fullScreen: true,
+              ),
             ),
             Positioned(
                 top: 50,
@@ -20,7 +23,9 @@ class ShoeDescriptionScreen extends StatelessWidget {
                   elevation: 0,
                   highlightElevation: 0,
                   backgroundColor: Colors.transparent,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   child: const Icon(
                     color: Colors.white,
                     size: 60,

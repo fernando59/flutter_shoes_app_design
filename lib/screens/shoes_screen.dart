@@ -17,8 +17,11 @@ class ShoesScreen extends StatelessWidget {
           child: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(children: const [
-          ShoesSizePreview(
-            fullScreen: false,
+          Hero(
+            tag: 'shoe-1',
+            child: ShoesSizePreview(
+              fullScreen: false,
+            ),
           ),
           ShoeDescription(
             description:
