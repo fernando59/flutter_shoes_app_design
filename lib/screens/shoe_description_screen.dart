@@ -6,28 +6,110 @@ class ShoeDescriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Column(
-      children: [
-        ShoesSizePreview(
-          fullScreen: true,
-        ),
-        Expanded(
-            child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const ShoeDescription(
-                description:
-                    "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
-                title: "Nike Air Max 720",
-              ),
-              _BuyNow(),
-              _ColorsShoe()
-            ],
+    return SafeArea(
+      child: Scaffold(
+          body: Column(
+        children: [
+          Stack(children: [
+            const ShoesSizePreview(
+              fullScreen: true,
+            ),
+            Positioned(
+                top: 50,
+                child: FloatingActionButton(
+                  elevation: 0,
+                  highlightElevation: 0,
+                  backgroundColor: Colors.transparent,
+                  onPressed: () {},
+                  child: const Icon(
+                    color: Colors.white,
+                    size: 60,
+                    Icons.chevron_left,
+                  ),
+                ))
+          ]),
+          Expanded(
+              child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: Column(
+              children: const [
+                ShoeDescription(
+                  description:
+                      "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
+                  title: "Nike Air Max 720",
+                ),
+                _BuyNow(),
+                _ColorsShoe(),
+                _ButtonsLikeCartSettings()
+              ],
+            ),
+          ))
+        ],
+      )),
+    );
+  }
+}
+
+class _ButtonsLikeCartSettings extends StatelessWidget {
+  const _ButtonsLikeCartSettings({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: const EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+          const _ButtonShadow(
+            icon: Icon(
+              Icons.star,
+              color: Colors.red,
+              size: 25,
+            ),
           ),
-        ))
-      ],
-    ));
+          _ButtonShadow(
+            icon: Icon(
+              Icons.add_shopping_cart,
+              color: Colors.grey.withOpacity(0.4),
+              size: 25,
+            ),
+          ),
+          _ButtonShadow(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.grey.withOpacity(0.4),
+              size: 25,
+            ),
+          ),
+        ]));
+  }
+}
+
+class _ButtonShadow extends StatelessWidget {
+  final Icon icon;
+  const _ButtonShadow({
+    Key? key,
+    required this.icon,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 45,
+      height: 45,
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.black12,
+                spreadRadius: -5,
+                blurRadius: 20,
+                offset: Offset(0, 10))
+          ]),
+      child: icon,
+    );
   }
 }
 

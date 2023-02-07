@@ -8,7 +8,7 @@ class ShoesSizePreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: fullScreen ? 5 : 30, vertical: fullScreen ? 5 : 0),
+          horizontal: fullScreen ? 5 : 30, vertical: fullScreen ? 0 : 5),
       child: Container(
         width: double.infinity,
         height: fullScreen ? 410 : 430,
