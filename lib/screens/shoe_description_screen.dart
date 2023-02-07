@@ -21,12 +21,79 @@ class ShoeDescriptionScreen extends StatelessWidget {
                     "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
                 title: "Nike Air Max 720",
               ),
-              _BuyNow()
+              _BuyNow(),
+              _ColorsShoe()
             ],
           ),
         ))
       ],
     ));
+  }
+}
+
+class _ColorsShoe extends StatelessWidget {
+  const _ColorsShoe({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Row(
+        children: [
+          Expanded(
+              child: Stack(
+            children: const [
+              Positioned(
+                  left: 90,
+                  child: _ButtonColor(
+                    color: Color(0xffC6d642),
+                  )),
+              Positioned(
+                  left: 60,
+                  child: _ButtonColor(
+                    color: Color(0xffFFAD29),
+                  )),
+              Positioned(
+                  left: 30,
+                  child: _ButtonColor(
+                    color: Color(0xff2099F1),
+                  )),
+              _ButtonColor(
+                color: Color(0xff364D56),
+              ),
+            ],
+          )),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: ButtonOrange(
+              text: 'More related items',
+              height: 30,
+              width: 170,
+              color: Color(0xffFFC675),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _ButtonColor extends StatelessWidget {
+  final Color color;
+  const _ButtonColor({
+    Key? key,
+    required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 45,
+      height: 45,
+      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+    );
   }
 }
 
@@ -40,9 +107,9 @@ class _BuyNow extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Container(
-        margin: EdgeInsets.only(top: 20),
+        margin: const EdgeInsets.only(top: 20, bottom: 20),
         child: Row(
-          children: [
+          children: const [
             Text(
               '\$180.0',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),

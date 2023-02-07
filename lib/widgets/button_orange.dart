@@ -4,8 +4,14 @@ class ButtonOrange extends StatelessWidget {
   final String text;
   final double? height;
   final double? width;
+  final Color? color;
+
   const ButtonOrange(
-      {super.key, required this.text, this.height = 50, this.width = 150});
+      {super.key,
+      required this.text,
+      this.height = 50,
+      this.width = 150,
+      this.color = Colors.orange});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +19,8 @@ class ButtonOrange extends StatelessWidget {
       alignment: Alignment.center,
       width: width,
       height: height,
-      decoration: BoxDecoration(
-          color: Colors.orange, borderRadius: BorderRadius.circular(100)),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(100)),
       child: Text(
         text,
         style:
