@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:app_shoes/widgets/index.dart';
 import 'package:flutter/material.dart';
 
@@ -37,15 +38,19 @@ class ShoeDescriptionScreen extends StatelessWidget {
               child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
-              children: const [
-                ShoeDescription(
+              children: [
+                const ShoeDescription(
                   description:
                       "The Nike Air Max 720 goes bigger than ever before with Nike's taller Air unit yet, offering more air underfoot for unimaginable, all-day comfort. Has Air Max gone too far? We hope so.",
                   title: "Nike Air Max 720",
                 ),
-                _BuyNow(),
-                _ColorsShoe(),
-                _ButtonsLikeCartSettings()
+                const _BuyNow(),
+                Bounce(
+                  child: const _ColorsShoe(),
+                  delay: Duration(seconds: 1),
+                  from: 8,
+                ),
+                const _ButtonsLikeCartSettings()
               ],
             ),
           ))
@@ -136,19 +141,23 @@ class _ColorsShoe extends StatelessWidget {
                   left: 90,
                   child: _ButtonColor(
                     color: Color(0xffC6d642),
+                    index: 4,
                   )),
               Positioned(
                   left: 60,
                   child: _ButtonColor(
                     color: Color(0xffFFAD29),
+                    index: 3,
                   )),
               Positioned(
                   left: 30,
                   child: _ButtonColor(
                     color: Color(0xff2099F1),
+                    index: 2,
                   )),
               _ButtonColor(
                 color: Color(0xff364D56),
+                index: 1,
               ),
             ],
           )),
@@ -169,17 +178,23 @@ class _ColorsShoe extends StatelessWidget {
 
 class _ButtonColor extends StatelessWidget {
   final Color color;
+  final int index;
   const _ButtonColor({
     Key? key,
     required this.color,
+    required this.index,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+    return FadeInLeft(
+      delay: Duration(milliseconds: index * 100),
+      duration: Duration(milliseconds: 300),
+      child: Container(
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      ),
     );
   }
 }
