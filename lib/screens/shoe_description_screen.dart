@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:app_shoes/helpers/helpers.dart';
 import 'package:app_shoes/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ class ShoeDescriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    changeStatusLight();
     return SafeArea(
       child: Scaffold(
           body: Column(
@@ -28,6 +30,7 @@ class ShoeDescriptionScreen extends StatelessWidget {
                   highlightElevation: 0,
                   backgroundColor: Colors.transparent,
                   onPressed: () {
+                    changeStatusDark();
                     Navigator.pop(context);
                   },
                   child: const Icon(

@@ -1,3 +1,4 @@
+import 'package:app_shoes/helpers/helpers.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/index.dart';
@@ -7,6 +8,7 @@ class ShoesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    changeStatusDark();
     return Scaffold(
         body: Column(children: <Widget>[
       const CustomAppBar(title: 'For you'),
